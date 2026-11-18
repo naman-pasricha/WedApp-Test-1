@@ -1,6 +1,9 @@
+'use client';
+
 // Guest home page
 import { HomePageContent } from '@/components/guest/HomePageContent';
 import { GuestSessionProvider, useGuestSessionContext } from '@/components/guest/GuestSessionProvider';
+import type { Viewport } from 'next';
 
 
 export const viewport: Viewport = {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
-import { useGuestSession } from '@/lib/guest-session/hooks';
+import { useGuestSessionContext } from './GuestSessionProvider';
 import { Trophy, Target, HelpCircle, Clock, Camera, MessageSquare, Crown, ArrowRight } from 'lucide-react';
 import { clsx } from 'clsx';
 import type { Challenge, ChallengeParticipation, LeaderboardEntry } from '@/lib/games/types';
@@ -12,7 +12,7 @@ interface GamesContentProps {
 }
 
 export function GamesContent({ weddingSlug }: GamesContentProps) {
-  const { guest, loading: sessionLoading } = useGuestSession();
+  const { session: guest, isLoading: sessionLoading } = useGuestSessionContext();
   const [challenges, setChallenges] = useState<Challenge[]>([]);
   const [participations, setParticipations] = useState<ChallengeParticipation[]>([]);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);

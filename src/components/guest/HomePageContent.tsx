@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createBrowserClient } from '@supabase/ssr';
 import { EventCard } from './EventCard';
-import { useGuestSession } from '@/lib/guest-session/hooks';
+import { useGuestSessionContext } from './GuestSessionProvider';
 
 interface WeddingData {
   id: string;
@@ -17,7 +17,7 @@ interface WeddingData {
 }
 
 export function HomePageContent() {
-  const { guest, loading } = useGuestSession();
+  const { session: guest, isLoading: loading } = useGuestSessionContext();
   const [wedding, setWedding] = useState<WeddingData | null>(null);
   const [events, setEvents] = useState<any[]>([]);
   const [loadingData, setLoadingData] = useState(true);
